@@ -1,0 +1,11 @@
+package com.cesurg.controlerio.core.domain.interfaces;
+
+import com.cesurg.controlerio.core.domain.model.Medicao;
+
+import java.util.List;
+
+public interface MedicaoUseCase {
+    Medicao adicionarMedicao(Medicao medicao);
+    void deletarMedicao(String id);
+    List<Medicao> listarMedicoes();
+}
