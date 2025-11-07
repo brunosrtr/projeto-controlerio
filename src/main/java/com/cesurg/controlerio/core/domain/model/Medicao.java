@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "medicao")
 public class Medicao {
     @Id
-    private String id;
+    private int id;
 
     @Column(name = "altura")
     private double  altura;
@@ -35,7 +35,7 @@ public class Medicao {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
