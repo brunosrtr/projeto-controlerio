@@ -19,3 +19,4 @@ public class UsuarioController {
         usuarioRepository.create(usuario);
     }
 }
+
