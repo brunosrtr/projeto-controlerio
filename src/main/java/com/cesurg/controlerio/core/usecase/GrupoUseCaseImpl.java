@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GrupoUseCaseImpl implements GrupoUseCase {
 
-    GrupoRepositoryImpl grupoRepository;
+    private final GrupoRepositoryImpl grupoRepository;
 
     public GrupoUseCaseImpl(GrupoRepositoryImpl grupoRepository) {
         this.grupoRepository = grupoRepository;
