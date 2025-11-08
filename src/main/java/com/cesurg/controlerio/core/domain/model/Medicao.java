@@ -31,7 +31,7 @@ public class Medicao {
     @Column(name = "id_ponto_medicao")
     private int idPontoMedicao;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

@@ -2,7 +2,7 @@ package com.cesurg.controlerio.core.usecase;
 
 import com.cesurg.controlerio.core.domain.interfaces.MedicaoUseCase;
 import com.cesurg.controlerio.core.domain.model.Medicao;
-import com.cesurg.controlerio.infra.repository.MedicaoRepository;
+import com.cesurg.controlerio.infra.repository.MedicaoRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,25 +11,25 @@ import java.util.List;
 @Service
 public class MedicaoUseCaseImpl implements MedicaoUseCase {
 
-    private final MedicaoRepository medicaoRepository;
+    private final MedicaoRepositoryImpl medicaoRepository;
 
-    public MedicaoUseCaseImpl(MedicaoRepository medicaoRepository) {
+    public MedicaoUseCaseImpl(MedicaoRepositoryImpl medicaoRepository) {
         this.medicaoRepository = medicaoRepository;
     }
 
     @Override
-    public Medicao adicionarMedicao(Medicao medicao) {
-        return medicaoRepository.save(medicao);
+    public void adicionarMedicao(Medicao medicao) {
+        medicaoRepository.adicionarMedicao(medicao);
     }
 
     @Override
     public void deletarMedicao(String id) {
-        medicaoRepository.deleteById(id);
+        medicaoRepository.deletarMedicao(id);
     }
 
     @Override
     public List<Medicao> listarMedicoes() {
-        return medicaoRepository.findAll();
+        return medicaoRepository.listarMedicoes();
     }
 
 

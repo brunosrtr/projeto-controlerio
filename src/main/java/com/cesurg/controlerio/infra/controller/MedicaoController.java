@@ -18,8 +18,8 @@ public class MedicaoController {
     }
 
     @PostMapping
-    public Medicao adicionarMedicao(@RequestBody Medicao medicao) {
-        return medicaoUseCase.adicionarMedicao(medicao);
+    public void adicionarMedicao(@RequestBody Medicao medicao) {
+        medicaoUseCase.adicionarMedicao(medicao);
     }
 
     @DeleteMapping("/{id}")

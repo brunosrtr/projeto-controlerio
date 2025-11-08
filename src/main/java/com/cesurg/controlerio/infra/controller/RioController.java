@@ -18,8 +18,8 @@ public class RioController {
     }
 
     @PostMapping
-    public Rio adicionarRio (@RequestBody Rio rio) {
-        return rioUseCase.adicionarRio(rio);
+    public void adicionarRio (@RequestBody Rio rio) {
+        rioUseCase.adicionarRio(rio);
     }
 
     @DeleteMapping("/{id}")

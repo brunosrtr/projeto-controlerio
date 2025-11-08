@@ -2,7 +2,7 @@ package com.cesurg.controlerio.core.usecase;
 
 import com.cesurg.controlerio.core.domain.interfaces.RioUseCase;
 import com.cesurg.controlerio.core.domain.model.Rio;
-import com.cesurg.controlerio.infra.repository.RioRepository;
+import com.cesurg.controlerio.infra.repository.RioRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,24 +11,24 @@ import java.util.List;
 public class RioUseCaseImpl implements RioUseCase {
 
 
-    private final RioRepository rioRepository;
+    private final RioRepositoryImpl rioRepository;
 
-    public RioUseCaseImpl(RioRepository rioRepository) {
+    public RioUseCaseImpl(RioRepositoryImpl rioRepository) {
         this.rioRepository = rioRepository;
     }
 
     @Override
-    public Rio adicionarRio(Rio rio) {
-        return rioRepository.save(rio);
+    public void adicionarRio(Rio rio) {
+        rioRepository.adicionarRio(rio);
     }
 
     @Override
     public void deletarRio(String id) {
-        rioRepository.deleteById(id);
+        rioRepository.deletarRio(id);
     }
 
     @Override
     public List<Rio> listarRios() {
-        return rioRepository.findAll();
+        return rioRepository.listarRios();
     }
 }
