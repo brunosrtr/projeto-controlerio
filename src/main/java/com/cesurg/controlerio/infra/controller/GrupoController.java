@@ -15,23 +15,23 @@ public class GrupoController {
     @Autowired
     private GrupoRepository grupoRepository;
 
-    @PostMapping("/criar")
-    public Grupo criar(@RequestBody Grupo grupo) {
-        return grupoRepository.criarGrupo(grupo);
+    @PostMapping
+    public void criarGrupo (@RequestBody Grupo grupo) {
+        grupoRepository.criarGrupo(grupo);
     }
 
-    @GetMapping("/listar")
-    List<Usuario> listar() {
+    @GetMapping
+    List<Grupo> listarGrupo() {
         return grupoRepository.listarGrupo();
     }
 
-    @PutMapping
-    void atualizar(@RequestBody Grupo grupo) {
+    @PutMapping("/{id}")
+    void atualizarGrupo (@RequestBody Grupo grupo) {
         grupoRepository.atualizarGrupo(grupo);
     }
 
     @DeleteMapping("{id}")
-    void deletar(@PathVariable String id){
+    void deletarGrupo (@PathVariable String id){
         grupoRepository.deletarGrupo(id);
     }
 }

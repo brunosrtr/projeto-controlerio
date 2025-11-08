@@ -17,15 +17,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Transactional
     @Override
-    public Usuario criarUsuario(Usuario usuario) {
+    public void criarUsuario(Usuario usuario) {
         String sql = "INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)";
         entityManager.createNativeQuery(sql)
                 .setParameter("nome", usuario.getNome())
                 .setParameter("email", usuario.getEmail())
                 .setParameter("senha", usuario.getSenha())
                 .executeUpdate();
-
-        return usuario;
     }
 
     @Override
@@ -45,7 +43,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Transactional
     @Override
-    public Usuario atualizarUsuario(Usuario usuario){
+    public void atualizarUsuario(Usuario usuario){
         String sql = "UPDATE usuario SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
         entityManager.createNativeQuery(sql)
                 .setParameter("nome", usuario.getNome())
@@ -53,7 +51,5 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
                 .setParameter("senha", usuario.getSenha())
                 .setParameter("id", usuario.getId())
                 .executeUpdate();
-
-        return usuario;
     }
 }

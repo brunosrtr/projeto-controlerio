@@ -16,8 +16,8 @@ public class UsuarioUseCaseImpl implements UsuarioUseCase {
     }
 
     @Override
-    public Usuario criarUsuario(Usuario usuario) {
-        return usuarioRepository.criarUsuario(usuario);
+    public void criarUsuario(Usuario usuario) {
+        usuarioRepository.criarUsuario(usuario);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class UsuarioUseCaseImpl implements UsuarioUseCase {
     }
 
     @Override
-    public Usuario atualizarUsuario(Usuario usuario) {
-        return usuarioRepository.atualizarUsuario(usuario);
+    public void atualizarUsuario(Usuario usuario) {
+        usuarioRepository.atualizarUsuario(usuario);
     }
 }

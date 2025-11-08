@@ -14,22 +14,22 @@ public class UsuarioController {
     UsuarioRepository usuarioRepository;
 
     @PostMapping
-    Usuario criar(@RequestBody Usuario usuario) {
-        return usuarioRepository.criarUsuario(usuario);
+    void criarUsuario(@RequestBody Usuario usuario) {
+        usuarioRepository.criarUsuario(usuario);
     }
 
     @GetMapping
-    List<Usuario> listar() {
+    List<Usuario> listarUsuario() {
         return usuarioRepository.listarUsuario();
     }
 
-    @PutMapping
-    void atualizar(@RequestBody Usuario usuario) {
+    @PutMapping("/{id}")
+    void atualizarUsuario(@RequestBody Usuario usuario) {
         usuarioRepository.atualizarUsuario(usuario);
     }
 
     @DeleteMapping("{id}")
-    void deletar(@PathVariable String id){
+    void deletarUsuario(@PathVariable String id){
         usuarioRepository.deletarUsuario(id);
     }
 

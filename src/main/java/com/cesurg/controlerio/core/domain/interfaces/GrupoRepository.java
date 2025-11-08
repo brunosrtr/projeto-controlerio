@@ -6,8 +6,8 @@ import com.cesurg.controlerio.core.domain.model.Usuario;
 import java.util.List;
 
 public interface GrupoRepository {
-        Grupo criarGrupo(Grupo grupo);
-        List<Usuario> listarGrupo();
-        void deletarGrupo(String id);
-        Grupo atualizarGrupo(Grupo grupo);
+    void criarGrupo(Grupo grupo);
+    void atualizarGrupo(Grupo grupo);
+    void deletarGrupo(String id);
+    List<Grupo> listarGrupo();
 }
