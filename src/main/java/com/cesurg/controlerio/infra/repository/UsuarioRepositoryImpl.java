@@ -7,6 +7,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
@@ -15,12 +17,43 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Transactional
     @Override
-    public void create(Usuario usuario){
-        String query = "INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)";
-        entityManager.createNativeQuery(query)
+    public Usuario criarUsuario(Usuario usuario) {
+        String sql = "INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)";
+        entityManager.createNativeQuery(sql)
                 .setParameter("nome", usuario.getNome())
-                .setParameter("email",usuario.getEmail())
-                .setParameter("senha",usuario.getSenha())
-                        .executeUpdate();
+                .setParameter("email", usuario.getEmail())
+                .setParameter("senha", usuario.getSenha())
+                .executeUpdate();
+
+        return usuario;
+    }
+
+    @Override
+    public List<Usuario> listarUsuario(){
+        String sql = "SELECT id, nome, email, senha FROM usuario";
+        return entityManager.createNativeQuery(sql, Usuario.class).getResultList();
+    }
+
+    @Transactional
+    @Override
+    public void deletarUsuario(String id){
+        String sql = "DELETE FROM usuario WHERE ID = :id";
+        entityManager.createNativeQuery(sql)
+                .setParameter("id", id)
+                .executeUpdate();
+    }
+
+    @Transactional
+    @Override
+    public Usuario atualizarUsuario(Usuario usuario){
+        String sql = "UPDATE usuario SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
+        entityManager.createNativeQuery(sql)
+                .setParameter("nome", usuario.getNome())
+                .setParameter("email", usuario.getEmail())
+                .setParameter("senha", usuario.getSenha())
+                .setParameter("id", usuario.getId())
+                .executeUpdate();
+
+        return usuario;
     }
 }

@@ -2,7 +2,11 @@ package com.cesurg.controlerio.core.domain.interfaces;
 
 import com.cesurg.controlerio.core.domain.model.Usuario;
 
-public interface UsuarioRepository {
-    void create(Usuario usuario);
+import java.util.List;
 
+public interface UsuarioRepository {
+    Usuario criarUsuario(Usuario usuario);
+    List<Usuario> listarUsuario();
+    void deletarUsuario(String id);
+    Usuario atualizarUsuario(Usuario usuario);
 }
