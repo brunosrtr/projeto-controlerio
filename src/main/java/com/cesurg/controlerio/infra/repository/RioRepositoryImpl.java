@@ -13,19 +13,38 @@ import java.util.List;
 @Repository
 public class RioRepositoryImpl implements RioRepository{
 
+    @PersistenceContext
+    EntityManager entityManager;
+
+    @Transactional
 
     @Override
     public void adicionarRio(Rio rio) {
+        String query = "INSERT INTO rio (nome) VALUES (:nome)";
+        entityManager.createNativeQuery(query, Rio.class)
+                .setParameter("nome", rio.getNome())
+                .executeUpdate();
+    }
 
+    @Override
+    public void atualizarRio(Rio rio) {
+        String query = "UPDATE rio SET nome = :nome WHERE id = :id";
+        entityManager.createNativeQuery(query, Rio.class)
+                .setParameter("nome", rio.getNome())
+                .executeUpdate();
     }
 
     @Override
     public void deletarRio(String id) {
-
+        String query = "DELETE FROM rio WHERE id = :id";
+        entityManager.createNativeQuery(query, Rio.class)
+                .setParameter("id", id)
+                .executeUpdate();
     }
 
     @Override
     public List<Rio> listarRios() {
-        return List.of();
+        String query = "SELECT * FROM rio";
+        return entityManager.createNativeQuery(query, Rio.class).getResultList();
     }
 }

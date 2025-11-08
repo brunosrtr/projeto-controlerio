@@ -23,6 +23,12 @@ public class MedicaoUseCaseImpl implements MedicaoUseCase {
     }
 
     @Override
+    public void atualizarMedicao(Medicao medicao) {
+        medicaoRepository.atualizarMedicao(medicao);
+    }
+
+
+    @Override
     public void deletarMedicao(String id) {
         medicaoRepository.deletarMedicao(id);
     }

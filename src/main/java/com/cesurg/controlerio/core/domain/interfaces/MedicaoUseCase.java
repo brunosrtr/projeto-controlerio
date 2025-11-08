@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface MedicaoUseCase {
     void adicionarMedicao(Medicao medicao);
+    void atualizarMedicao(Medicao medicao);
     void deletarMedicao(String id);
     List<Medicao> listarMedicoes();
 }

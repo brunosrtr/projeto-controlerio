@@ -23,6 +23,12 @@ public class RioUseCaseImpl implements RioUseCase {
     }
 
     @Override
+    public void atualizarRio(Rio rio) {
+        rioRepository.atualizarRio(rio);
+    }
+
+
+    @Override
     public void deletarRio(String id) {
         rioRepository.deletarRio(id);
     }

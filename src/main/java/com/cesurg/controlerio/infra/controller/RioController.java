@@ -22,6 +22,11 @@ public class RioController {
         rioUseCase.adicionarRio(rio);
     }
 
+    @PutMapping("/{id}")
+    public void atualizarRio (@RequestBody Rio rio) {
+        rioUseCase.atualizarRio(rio);
+    }
+
     @DeleteMapping("/{id}")
     public void deletarRio (@PathVariable String id) {
         rioUseCase.deletarRio(id);

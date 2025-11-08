@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface RioRepository {
     void adicionarRio(Rio rio);
+    void atualizarRio(Rio rio);
     void deletarRio(String id);
     List<Rio> listarRios();
 }
