@@ -31,6 +31,7 @@ public class GrupoRepositoryImpl implements GrupoRepository {
         String sql = "UPDATE grupo SET nome = :nome WHERE id = :id";
         entityManager.createNativeQuery(sql)
                 .setParameter("nome", grupo.getNome())
+                .setParameter("id", grupo.getId())
                 .executeUpdate();
     }
 

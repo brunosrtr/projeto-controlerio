@@ -1,6 +1,7 @@
 package com.cesurg.controlerio.infra.controller;
 
 import com.cesurg.controlerio.core.domain.interfaces.UsuarioRepository;
+import com.cesurg.controlerio.core.domain.interfaces.UsuarioUseCase;
 import com.cesurg.controlerio.core.domain.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,26 +12,26 @@ import java.util.List;
 @RequestMapping("/usuarios")
 public class UsuarioController {
     @Autowired
-    UsuarioRepository usuarioRepository;
+    UsuarioUseCase usuarioUseCase;
 
     @PostMapping
     void criarUsuario(@RequestBody Usuario usuario) {
-        usuarioRepository.criarUsuario(usuario);
+        usuarioUseCase.criarUsuario(usuario);
     }
 
     @GetMapping
     List<Usuario> listarUsuario() {
-        return usuarioRepository.listarUsuario();
+        return usuarioUseCase.listarUsuario();
     }
 
     @PutMapping("/{id}")
     void atualizarUsuario(@RequestBody Usuario usuario) {
-        usuarioRepository.atualizarUsuario(usuario);
+        usuarioUseCase.atualizarUsuario(usuario);
     }
 
     @DeleteMapping("{id}")
     void deletarUsuario(@PathVariable String id){
-        usuarioRepository.deletarUsuario(id);
+        usuarioUseCase.deletarUsuario(id);
     }
 
 

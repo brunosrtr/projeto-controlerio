@@ -1,6 +1,7 @@
 package com.cesurg.controlerio.infra.controller;
 
 import com.cesurg.controlerio.core.domain.interfaces.PermissaoRepository;
+import com.cesurg.controlerio.core.domain.interfaces.PermissaoUseCase;
 import com.cesurg.controlerio.core.domain.model.Permissao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.batch.BatchTransactionManager;
@@ -12,26 +13,26 @@ import java.util.List;
 @RequestMapping("/permissao")
 public class PermissaoController {
     @Autowired
-    private PermissaoRepository permissaoRepository;
+    private PermissaoUseCase permissaoUseCase;
 
     @PostMapping
     public void criarPermissao(@RequestBody Permissao permissao){
-        permissaoRepository.criarPermissao(permissao);
+        permissaoUseCase.criarPermissao(permissao);
     }
 
     @GetMapping
     List<Permissao> listarPermissoes(){
-        return permissaoRepository.listarPermissao();
+        return permissaoUseCase.listarPermissao();
     }
 
     @PutMapping("/{id}")
     public void atualizarPermissao(@RequestBody Permissao permissao){
-        permissaoRepository.atualizarPermissoes(permissao);
+        permissaoUseCase.atualizarPermissoes(permissao);
     }
 
     @DeleteMapping("{id}")
     public void deletarPermissao(@PathVariable String id){
-        permissaoRepository.deletarPermissao(id);
+        permissaoUseCase.deletarPermissao(id);
     }
 
 

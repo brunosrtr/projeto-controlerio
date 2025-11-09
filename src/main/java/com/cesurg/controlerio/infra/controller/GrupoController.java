@@ -1,6 +1,7 @@
 package com.cesurg.controlerio.infra.controller;
 
 import com.cesurg.controlerio.core.domain.interfaces.GrupoRepository;
+import com.cesurg.controlerio.core.domain.interfaces.GrupoUseCase;
 import com.cesurg.controlerio.core.domain.model.Grupo;
 import com.cesurg.controlerio.core.domain.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,25 +14,25 @@ import java.util.List;
 public class GrupoController {
 
     @Autowired
-    private GrupoRepository grupoRepository;
+    private GrupoUseCase grupoUseCase;
 
     @PostMapping
     public void criarGrupo (@RequestBody Grupo grupo) {
-        grupoRepository.criarGrupo(grupo);
+        grupoUseCase.criarGrupo(grupo);
     }
 
     @GetMapping
     List<Grupo> listarGrupo() {
-        return grupoRepository.listarGrupo();
+        return grupoUseCase.listarGrupo();
     }
 
     @PutMapping("/{id}")
     void atualizarGrupo (@RequestBody Grupo grupo) {
-        grupoRepository.atualizarGrupo(grupo);
+        grupoUseCase.atualizarGrupo(grupo);
     }
 
     @DeleteMapping("{id}")
     void deletarGrupo (@PathVariable String id){
-        grupoRepository.deletarGrupo(id);
+        grupoUseCase.deletarGrupo(id);
     }
 }
