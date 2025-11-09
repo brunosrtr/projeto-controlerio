@@ -9,7 +9,7 @@ public class Grupo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "nome")
     private String nome;
@@ -17,12 +17,12 @@ public class Grupo {
     public Grupo() {
     }
 
-    public Grupo(long id, String nome) {
+    public Grupo(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

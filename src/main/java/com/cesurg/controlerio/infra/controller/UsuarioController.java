@@ -29,8 +29,8 @@ public class UsuarioController {
         usuarioUseCase.atualizarUsuario(usuario);
     }
 
-    @DeleteMapping("{id}")
-    void deletarUsuario(@PathVariable String id){
+    @DeleteMapping("/{id}")
+    void deletarUsuario(@PathVariable Long id){
         usuarioUseCase.deletarUsuario(id);
     }
 

@@ -3,15 +3,16 @@ package com.cesurg.controlerio.core.usecase;
 import com.cesurg.controlerio.core.domain.interfaces.UsuarioRepository;
 import com.cesurg.controlerio.core.domain.interfaces.UsuarioUseCase;
 import com.cesurg.controlerio.core.domain.model.Usuario;
-import com.cesurg.controlerio.infra.repository.UsuarioRepositoryImpl;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UsuarioUseCaseImpl implements UsuarioUseCase {
 
-    private final UsuarioRepositoryImpl usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public UsuarioUseCaseImpl(UsuarioRepositoryImpl usuarioRepository) {
+    public UsuarioUseCaseImpl(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
@@ -26,7 +27,7 @@ public class UsuarioUseCaseImpl implements UsuarioUseCase {
     }
 
     @Override
-    public void deletarUsuario(String id) {
+    public void deletarUsuario(Long id) {
         usuarioRepository.deletarUsuario(id);
     }
 

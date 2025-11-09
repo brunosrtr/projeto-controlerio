@@ -7,6 +7,6 @@ import java.util.List;
 public interface PermissaoUseCase {
     void criarPermissao(Permissao permissao);
     void atualizarPermissoes(Permissao permissao);
-    void deletarPermissao(String id);
+    void deletarPermissao(Long id);
     List<Permissao> listarPermissao();
 }

@@ -1,16 +1,19 @@
 package com.cesurg.controlerio.core.usecase;
 
+import com.cesurg.controlerio.core.domain.interfaces.GrupoRepository;
 import com.cesurg.controlerio.core.domain.interfaces.GrupoUseCase;
 import com.cesurg.controlerio.core.domain.model.Grupo;
 import com.cesurg.controlerio.infra.repository.GrupoRepositoryImpl;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GrupoUseCaseImpl implements GrupoUseCase {
 
-    private final GrupoRepositoryImpl grupoRepository;
+    private final GrupoRepository grupoRepository;
 
-    public GrupoUseCaseImpl(GrupoRepositoryImpl grupoRepository) {
+    public GrupoUseCaseImpl(GrupoRepository grupoRepository) {
         this.grupoRepository = grupoRepository;
     }
 
@@ -25,7 +28,7 @@ public class GrupoUseCaseImpl implements GrupoUseCase {
     }
 
     @Override
-    public void deletarGrupo(String id) {
+    public void deletarGrupo(Long id) {
         grupoRepository.deletarGrupo(id);
     }
 

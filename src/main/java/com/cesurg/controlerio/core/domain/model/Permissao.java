@@ -11,7 +11,7 @@ public class Permissao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "nome")
     private String nome;
@@ -30,12 +30,12 @@ public class Permissao {
     public Permissao() {
     }
 
-    public Permissao(long id, String acao) {
+    public Permissao(Long id, String acao) {
         this.id = id;
         this.acao = acao;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

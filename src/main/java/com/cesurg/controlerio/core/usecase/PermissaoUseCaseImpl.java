@@ -1,16 +1,19 @@
 package com.cesurg.controlerio.core.usecase;
 
+import com.cesurg.controlerio.core.domain.interfaces.PermissaoRepository;
 import com.cesurg.controlerio.core.domain.interfaces.PermissaoUseCase;
 import com.cesurg.controlerio.core.domain.model.Permissao;
 import com.cesurg.controlerio.infra.repository.PermissaoRepositoryImpl;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PermissaoUseCaseImpl implements PermissaoUseCase {
 
-    private final PermissaoRepositoryImpl permissaoRepository;
+    private final PermissaoRepository permissaoRepository;
 
-    public PermissaoUseCaseImpl(PermissaoRepositoryImpl permissaoRepository) {
+    public PermissaoUseCaseImpl (PermissaoRepository permissaoRepository) {
         this.permissaoRepository = permissaoRepository;
     }
 
@@ -25,7 +28,7 @@ public class PermissaoUseCaseImpl implements PermissaoUseCase {
     }
 
     @Override
-    public void deletarPermissao(String id) {
+    public void deletarPermissao(Long id) {
         permissaoRepository.deletarPermissao(id);
     }
 

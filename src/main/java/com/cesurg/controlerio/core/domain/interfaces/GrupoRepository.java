@@ -8,6 +8,6 @@ import java.util.List;
 public interface GrupoRepository {
     void criarGrupo(Grupo grupo);
     void atualizarGrupo(Grupo grupo);
-    void deletarGrupo(String id);
+    void deletarGrupo(Long id);
     List<Grupo> listarGrupo();
 }

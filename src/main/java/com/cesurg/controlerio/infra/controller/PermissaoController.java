@@ -30,8 +30,8 @@ public class PermissaoController {
         permissaoUseCase.atualizarPermissoes(permissao);
     }
 
-    @DeleteMapping("{id}")
-    public void deletarPermissao(@PathVariable String id){
+    @DeleteMapping("/{id}")
+    public void deletarPermissao(@PathVariable Long id){
         permissaoUseCase.deletarPermissao(id);
     }
 

@@ -37,7 +37,7 @@ public class GrupoRepositoryImpl implements GrupoRepository {
 
     @Transactional
     @Override
-    public void deletarGrupo(String id) {
+    public void deletarGrupo(Long id) {
         String sql = "DELETE FROM grupo WHERE ID = :id";
         entityManager.createNativeQuery(sql)
                 .setParameter("id", id)

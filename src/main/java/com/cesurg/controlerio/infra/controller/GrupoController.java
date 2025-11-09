@@ -31,8 +31,8 @@ public class GrupoController {
         grupoUseCase.atualizarGrupo(grupo);
     }
 
-    @DeleteMapping("{id}")
-    void deletarGrupo (@PathVariable String id){
+    @DeleteMapping("/{id}")
+    void deletarGrupo (@PathVariable Long id){
         grupoUseCase.deletarGrupo(id);
     }
 }

@@ -40,7 +40,7 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
 
     @Transactional
     @Override
-    public void deletarPermissao(String id){
+    public void deletarPermissao(Long id){
         String sql = "DELETE FROM permissao WHERE id = :id";
         entityManager.createNativeQuery(sql)
                 .setParameter("id", id)

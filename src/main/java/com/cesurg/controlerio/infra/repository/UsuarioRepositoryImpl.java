@@ -34,7 +34,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Transactional
     @Override
-    public void deletarUsuario(String id){
+    public void deletarUsuario(Long id){
         String sql = "DELETE FROM usuario WHERE ID = :id";
         entityManager.createNativeQuery(sql)
                 .setParameter("id", id)
