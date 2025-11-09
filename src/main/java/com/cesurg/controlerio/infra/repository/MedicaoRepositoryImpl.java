@@ -16,7 +16,6 @@ public class MedicaoRepositoryImpl implements MedicaoRepository {
     EntityManager entityManager;
 
     @Transactional
-
     @Override
     public void adicionarMedicao(Medicao medicao) {
         String query = "INSERT INTO medicao (altura, clima, data_criacao, temperatura, id_usuario, id_ponto_medicao)" +
@@ -24,33 +23,33 @@ public class MedicaoRepositoryImpl implements MedicaoRepository {
         entityManager.createNativeQuery(query, Medicao.class)
                 .setParameter("altura", medicao.getAltura())
                 .setParameter("clima", medicao.getClima())
-                .setParameter("clima", medicao.getClima())
                 .setParameter("data_criacao", medicao.getDataCriacao())
-                .setParameter("temperatura", medicao.getClima())
+                .setParameter("temperatura", medicao.getTemperatura())
                 .setParameter("id_usuario", medicao.getIdUsuario())
                 .setParameter("id_ponto_medicao", medicao.getIdPontoMedicao())
         .executeUpdate();
     }
 
+    @Transactional
     @Override
     public void atualizarMedicao(Medicao medicao) {
         String query = "UPDATE medicao SET altura = :altura, clima = :clima, data_criacao = :data_criacao" +
                 "temperatura = :temperatura, id_usuario = :id_usuario, id_ponto_medicao = :id_ponto_medicao" +
                 "WHERE id = :id";
         entityManager.createNativeQuery(query, Medicao.class)
+                .setParameter("id", medicao.getId())
                 .setParameter("altura", medicao.getAltura())
                 .setParameter("clima", medicao.getClima())
-                .setParameter("clima", medicao.getClima())
                 .setParameter("data_criacao", medicao.getDataCriacao())
-                .setParameter("temperatura", medicao.getClima())
+                .setParameter("temperatura", medicao.getTemperatura())
                 .setParameter("id_usuario", medicao.getIdUsuario())
                 .setParameter("id_ponto_medicao", medicao.getIdPontoMedicao())
                 .executeUpdate();
     }
 
-
+    @Transactional
     @Override
-    public void deletarMedicao(String id) {
+    public void deletarMedicao(Long id) {
         String query = "DELETE FROM medicao WHERE id = :id";
         entityManager.createNativeQuery(query, Medicao.class)
                 .setParameter("id", id)

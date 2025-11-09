@@ -29,7 +29,7 @@ public class MedicaoController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletarMedicao(@PathVariable String id) {
+    public void deletarMedicao(@PathVariable Long id) {
         medicaoUseCase.deletarMedicao(id);
     }
 

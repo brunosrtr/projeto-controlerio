@@ -1,5 +1,6 @@
 package com.cesurg.controlerio.core.usecase;
 
+import com.cesurg.controlerio.core.domain.interfaces.RioRepository;
 import com.cesurg.controlerio.core.domain.interfaces.RioUseCase;
 import com.cesurg.controlerio.core.domain.model.Rio;
 import com.cesurg.controlerio.infra.repository.RioRepositoryImpl;
@@ -11,9 +12,9 @@ import java.util.List;
 public class RioUseCaseImpl implements RioUseCase {
 
 
-    private final RioRepositoryImpl rioRepository;
+    private final RioRepository rioRepository;
 
-    public RioUseCaseImpl(RioRepositoryImpl rioRepository) {
+    public RioUseCaseImpl(RioRepository rioRepository) {
         this.rioRepository = rioRepository;
     }
 
@@ -29,7 +30,7 @@ public class RioUseCaseImpl implements RioUseCase {
 
 
     @Override
-    public void deletarRio(String id) {
+    public void deletarRio(Long id) {
         rioRepository.deletarRio(id);
     }
 

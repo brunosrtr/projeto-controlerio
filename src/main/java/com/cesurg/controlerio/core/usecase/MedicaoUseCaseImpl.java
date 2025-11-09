@@ -1,5 +1,6 @@
 package com.cesurg.controlerio.core.usecase;
 
+import com.cesurg.controlerio.core.domain.interfaces.MedicaoRepository;
 import com.cesurg.controlerio.core.domain.interfaces.MedicaoUseCase;
 import com.cesurg.controlerio.core.domain.model.Medicao;
 import com.cesurg.controlerio.infra.repository.MedicaoRepositoryImpl;
@@ -11,9 +12,9 @@ import java.util.List;
 @Service
 public class MedicaoUseCaseImpl implements MedicaoUseCase {
 
-    private final MedicaoRepositoryImpl medicaoRepository;
+    private final MedicaoRepository medicaoRepository;
 
-    public MedicaoUseCaseImpl(MedicaoRepositoryImpl medicaoRepository) {
+    public MedicaoUseCaseImpl(MedicaoRepository medicaoRepository) {
         this.medicaoRepository = medicaoRepository;
     }
 
@@ -29,7 +30,7 @@ public class MedicaoUseCaseImpl implements MedicaoUseCase {
 
 
     @Override
-    public void deletarMedicao(String id) {
+    public void deletarMedicao(Long id) {
         medicaoRepository.deletarMedicao(id);
     }
 

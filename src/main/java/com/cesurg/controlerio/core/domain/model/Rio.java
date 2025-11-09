@@ -6,16 +6,16 @@ import jakarta.persistence.*;
 @Table(name = "rio")
 public class Rio {
     @Id
-    private int id;
+    private Long id;
 
     @Column(name = "nome")
     private String nome;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

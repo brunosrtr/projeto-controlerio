@@ -7,6 +7,6 @@ import java.util.List;
 public interface RioRepository {
     void adicionarRio(Rio rio);
     void atualizarRio(Rio rio);
-    void deletarRio(String id);
+    void deletarRio(Long id);
     List<Rio> listarRios();
 }

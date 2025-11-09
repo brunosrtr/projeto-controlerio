@@ -28,7 +28,7 @@ public class RioController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletarRio (@PathVariable String id) {
+    public void deletarRio (@PathVariable Long id) {
         rioUseCase.deletarRio(id);
     }
 

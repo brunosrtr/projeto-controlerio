@@ -17,7 +17,6 @@ public class RioRepositoryImpl implements RioRepository{
     EntityManager entityManager;
 
     @Transactional
-
     @Override
     public void adicionarRio(Rio rio) {
         String query = "INSERT INTO rio (nome) VALUES (:nome)";
@@ -26,16 +25,19 @@ public class RioRepositoryImpl implements RioRepository{
                 .executeUpdate();
     }
 
+    @Transactional
     @Override
     public void atualizarRio(Rio rio) {
         String query = "UPDATE rio SET nome = :nome WHERE id = :id";
         entityManager.createNativeQuery(query, Rio.class)
                 .setParameter("nome", rio.getNome())
+                .setParameter("id", rio.getId())
                 .executeUpdate();
     }
 
+    @Transactional
     @Override
-    public void deletarRio(String id) {
+    public void deletarRio(Long id) {
         String query = "DELETE FROM rio WHERE id = :id";
         entityManager.createNativeQuery(query, Rio.class)
                 .setParameter("id", id)
