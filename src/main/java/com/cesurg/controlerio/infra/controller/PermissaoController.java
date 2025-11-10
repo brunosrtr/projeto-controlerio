@@ -25,7 +25,7 @@ public class PermissaoController {
         return permissaoUseCase.listarPermissao();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     public void atualizarPermissao(@RequestBody Permissao permissao){
         permissaoUseCase.atualizarPermissoes(permissao);
     }

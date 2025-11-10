@@ -28,7 +28,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public List<Usuario> listarUsuario(){
-        String sql = "SELECT id, nome, email, senha FROM usuario";
+        String sql = "SELECT * FROM usuario";
         return entityManager.createNativeQuery(sql, Usuario.class).getResultList();
     }
 

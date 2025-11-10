@@ -24,7 +24,7 @@ public class UsuarioController {
         return usuarioUseCase.listarUsuario();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     void atualizarUsuario(@RequestBody Usuario usuario) {
         usuarioUseCase.atualizarUsuario(usuario);
     }

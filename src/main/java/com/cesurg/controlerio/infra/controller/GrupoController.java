@@ -26,7 +26,7 @@ public class GrupoController {
         return grupoUseCase.listarGrupo();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     void atualizarGrupo (@RequestBody Grupo grupo) {
         grupoUseCase.atualizarGrupo(grupo);
     }
