@@ -56,7 +56,6 @@ public class Usuario {
     public String getSenha() {
         return senha;
     }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
