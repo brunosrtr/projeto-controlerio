@@ -52,4 +52,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
                 .setParameter("id", usuario.getId())
                 .executeUpdate();
     }
+
+    @Override
+    public Usuario buscarUsuario(Long id){
+        String sql = "SELECT * FROM usuario WHERE id = :id";
+
+        return (Usuario) entityManager.createNativeQuery(sql, Usuario.class)
+                .setParameter("id", id)
+                .getSingleResult();
+    }
 }

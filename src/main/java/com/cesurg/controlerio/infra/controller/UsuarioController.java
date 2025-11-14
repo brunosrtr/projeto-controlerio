@@ -24,9 +24,9 @@ public class UsuarioController {
         return usuarioUseCase.listarUsuario();
     }
 
-    @PutMapping
-    void atualizarUsuario(@RequestBody Usuario usuario) {
-        usuarioUseCase.atualizarUsuario(usuario);
+    @PutMapping("/{id}")
+    void atualizarUsuario(@PathVariable long id, @RequestBody Usuario dados) {
+        usuarioUseCase.atualizarUsuario(id, dados);
     }
 
     @DeleteMapping("/{id}")

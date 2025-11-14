@@ -42,7 +42,21 @@ public class UsuarioUseCaseImpl implements UsuarioUseCase {
     }
 
     @Override
-    public void atualizarUsuario(Usuario usuario) {
-        usuarioRepository.atualizarUsuario(usuario);
+    public void atualizarUsuario(long id, Usuario dados) {
+
+        Usuario usuarioDoBanco = usuarioRepository.buscarUsuario(id);
+
+        if(dados.getNome() != null && !dados.getNome().isEmpty()){
+            usuarioDoBanco.setNome(dados.getNome());
+        }
+        if(dados.getEmail() != null && !dados.getEmail().isEmpty()){
+            usuarioDoBanco.setEmail(dados.getEmail());
+        }
+        if(dados.getSenha() != null && !dados.getSenha().isEmpty()){
+
+            String hashNovo = passwordEncoder.encode(dados.getSenha());
+            usuarioDoBanco.setSenha(hashNovo);
+        }
+        usuarioRepository.atualizarUsuario(usuarioDoBanco);
     }
 }

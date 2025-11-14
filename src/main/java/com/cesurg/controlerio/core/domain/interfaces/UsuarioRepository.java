@@ -9,4 +9,5 @@ public interface UsuarioRepository {
     void atualizarUsuario(Usuario usuario);
     void deletarUsuario(Long id);
     List<Usuario> listarUsuario();
+    Usuario buscarUsuario(Long id);
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UsuarioUseCase {
     void criarUsuario(Usuario usuario);
-    void atualizarUsuario(Usuario usuario);
+    void atualizarUsuario(long id, Usuario dados);
     void deletarUsuario(Long id);
     List<Usuario> listarUsuario();
 }
