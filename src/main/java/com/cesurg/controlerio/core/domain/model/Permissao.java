@@ -13,19 +13,8 @@ public class Permissao {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome")
-    private String nome;
-
     @Column(name = "acao")
     private String acao;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public Permissao() {
     }
