@@ -1,7 +1,7 @@
-package com.cesurg.controlerio.core.usecase;
+package com.cesurg.controlerio.core.domain.usecase;
 
-import com.cesurg.controlerio.core.domain.interfaces.CidadeRepository;
-import com.cesurg.controlerio.core.domain.interfaces.CidadeUseCase;
+import com.cesurg.controlerio.core.interfaces.CidadeRepository;
+import com.cesurg.controlerio.core.interfaces.CidadeUseCase;
 import com.cesurg.controlerio.core.domain.model.Cidade;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -21,7 +21,7 @@ public class CidadeUseCaseImpl implements CidadeUseCase {
     }
 
     @Override
-    public Cidade buscarPorId(int id) {
+    public List<Cidade> buscarPorId(Long id) {
         return cidadeRepository.buscarPorId(id);
     }
 
@@ -36,7 +36,7 @@ public class CidadeUseCaseImpl implements CidadeUseCase {
     }
 
     @Override
-    public void deletar(int id) {
+    public void deletar(Long id) {
         cidadeRepository.deletar(id);
     }
 }

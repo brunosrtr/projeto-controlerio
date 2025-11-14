@@ -1,6 +1,6 @@
 package com.cesurg.controlerio.infra.controller;
 
-import com.cesurg.controlerio.core.domain.interfaces.CidadeRepository;
+import com.cesurg.controlerio.core.interfaces.CidadeUseCase;
 import com.cesurg.controlerio.core.domain.model.Cidade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,31 +12,30 @@ import java.util.List;
 public class CidadeController {
 
     @Autowired
-    private CidadeRepository repository;
+    private CidadeUseCase cidadeUseCase;
 
     @GetMapping
     public List<Cidade> listar() {
-        return repository.listar();
+        return cidadeUseCase.listarTodas();
     }
 
     @GetMapping("/{id}")
-    public Cidade buscarPorId(@PathVariable int id) {
-        return repository.buscarPorId(id);
+    public List<Cidade> buscarPorId(@PathVariable Long id) {
+        return cidadeUseCase.buscarPorId(id);
     }
 
     @PostMapping
     public void criar(@RequestBody Cidade cidade) {
-        repository.criar(cidade);
+        cidadeUseCase.criar(cidade);
     }
 
     @PutMapping("/{id}")
-    public void atualizar(@PathVariable int id, @RequestBody Cidade cidade) {
-        cidade.setId(id);
-        repository.atualizar(cidade);
+    public void atualizar(@PathVariable Long id, @RequestBody Cidade cidade) {
+        cidadeUseCase.atualizar(cidade);
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable int id) {
-        repository.deletar(id);
+    public void deletar(@PathVariable Long id) {
+        cidadeUseCase.deletar(id);
     }
 }

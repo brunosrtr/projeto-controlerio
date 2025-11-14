@@ -1,6 +1,6 @@
 package com.cesurg.controlerio.infra.repository;
 
-import com.cesurg.controlerio.core.domain.interfaces.CidadeRepository;
+import com.cesurg.controlerio.core.interfaces.CidadeRepository;
 import com.cesurg.controlerio.core.domain.model.Cidade;
 import org.springframework.stereotype.Repository;
 import jakarta.persistence.EntityManager;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-@Transactional
 public class CidadeRepositoryImpl implements CidadeRepository {
 
     @PersistenceContext
@@ -20,36 +19,16 @@ public class CidadeRepositoryImpl implements CidadeRepository {
     @Override
     public List<Cidade> listar() {
         String sql = "SELECT id, nome FROM cidade";
-        Query query = entityManager.createNativeQuery(sql);
-        List<Object[]> resultados = query.getResultList();
-
-        List<Cidade> cidades = new ArrayList<>();
-        for (Object[] registro : resultados) {
-            Cidade cidade = new Cidade();
-            cidade.setId(((Number) registro[0]).intValue());
-            cidade.setNome((String) registro[1]);
-            cidades.add(cidade);
-        }
-        return cidades;
+        return entityManager.createNativeQuery(sql, Cidade.class).getResultList();
     }
 
     @Override
-    public Cidade buscarPorId(int id) {
+    public List<Cidade> buscarPorId(Long id) {
         String sql = "SELECT id, nome FROM cidade WHERE id = :id";
-        Query query = entityManager.createNativeQuery(sql);
-        query.setParameter("id", id);
-
-        try {
-            Object[] registro = (Object[]) query.getSingleResult();
-            Cidade cidade = new Cidade();
-            cidade.setId(((Number) registro[0]).intValue());
-            cidade.setNome((String) registro[1]);
-            return cidade;
-        } catch (Exception e) {
-            return null;
-        }
+        return entityManager.createNativeQuery(sql, Cidade.class).getResultList();
     }
 
+    @Transactional
     @Override
     public void criar(Cidade cidade) {
         String sql = "INSERT INTO cidade (nome) VALUES (:nome)";
@@ -58,6 +37,7 @@ public class CidadeRepositoryImpl implements CidadeRepository {
         query.executeUpdate();
     }
 
+    @Transactional
     @Override
     public void atualizar(Cidade cidade) {
         String sql = "UPDATE cidade SET nome = :nome WHERE id = :id";
@@ -67,8 +47,9 @@ public class CidadeRepositoryImpl implements CidadeRepository {
         query.executeUpdate();
     }
 
+    @Transactional
     @Override
-    public void deletar(int id) {
+    public void deletar(Long id) {
         String sql = "DELETE FROM cidade WHERE id = :id";
         Query query = entityManager.createNativeQuery(sql)
         .setParameter("id", id);
