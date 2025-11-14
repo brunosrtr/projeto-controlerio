@@ -17,20 +17,20 @@ public class CidadeRepositoryImpl implements CidadeRepository {
     private EntityManager entityManager;
 
     @Override
-    public List<Cidade> listar() {
+    public List<Cidade> listarCidade() {
         String sql = "SELECT id, nome FROM cidade";
         return entityManager.createNativeQuery(sql, Cidade.class).getResultList();
     }
 
     @Override
-    public List<Cidade> buscarPorId(Long id) {
+    public List<Cidade> buscarCidadePorId(Long id) {
         String sql = "SELECT id, nome FROM cidade WHERE id = :id";
         return entityManager.createNativeQuery(sql, Cidade.class).getResultList();
     }
 
     @Transactional
     @Override
-    public void criar(Cidade cidade) {
+    public void criarCidade(Cidade cidade) {
         String sql = "INSERT INTO cidade (nome) VALUES (:nome)";
         Query query = entityManager.createNativeQuery(sql)
         .setParameter("nome", cidade.getNome());
@@ -39,7 +39,7 @@ public class CidadeRepositoryImpl implements CidadeRepository {
 
     @Transactional
     @Override
-    public void atualizar(Cidade cidade) {
+    public void atualizarCidade(Cidade cidade) {
         String sql = "UPDATE cidade SET nome = :nome WHERE id = :id";
         Query query = entityManager.createNativeQuery(sql)
         .setParameter("nome", cidade.getNome())
@@ -49,7 +49,7 @@ public class CidadeRepositoryImpl implements CidadeRepository {
 
     @Transactional
     @Override
-    public void deletar(Long id) {
+    public void deletarCidade(Long id) {
         String sql = "DELETE FROM cidade WHERE id = :id";
         Query query = entityManager.createNativeQuery(sql)
         .setParameter("id", id);
