@@ -20,6 +20,14 @@ public class RioCidade {
     @JoinColumn(name = "id_rio", referencedColumnName = "id", insertable = false, updatable = false)
     private Rio rio;
 
+    public Rio getRio() {
+        return rio;
+    }
+
+    public void setRio(Rio rio) {
+        this.rio = rio;
+    }
+
     public Long getId() {
         return id;
     }
