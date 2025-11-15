@@ -11,10 +11,10 @@ public class RioCidade {
     private Long id;
 
     @Column(name = "id_rio")
-    private Integer idRio;
+    private Long idRio;
 
     @Column(name = "id_cidade")
-    private Integer idCidade;
+    private Long idCidade;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_rio", referencedColumnName = "id", insertable = false, updatable = false)
@@ -36,19 +36,19 @@ public class RioCidade {
         this.id = id;
     }
 
-    public Integer getIdRio() {
+    public Long getIdRio() {
         return idRio;
     }
 
-    public void setIdRio(Integer idRio) {
+    public void setIdRio(Long idRio) {
         this.idRio = idRio;
     }
 
-    public Integer getIdCidade() {
+    public Long getIdCidade() {
         return idCidade;
     }
 
-    public void setIdCidade(Integer idCidade) {
+    public void setIdCidade(Long idCidade) {
         this.idCidade = idCidade;
     }
 }
