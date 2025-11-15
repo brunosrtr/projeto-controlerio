@@ -23,4 +23,43 @@ public class GrupoPermissao {
 
     private Integer idPermissao;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    public Integer getIdGrupo() {
+        return idGrupo;
+    }
+
+    public void setIdGrupo(Integer idGrupo) {
+        this.idGrupo = idGrupo;
+    }
+
+    public Permissao getPermissao() {
+        return permissao;
+    }
+
+    public void setPermissao(Permissao permissao) {
+        this.permissao = permissao;
+    }
+
+    public Integer getIdPermissao() {
+        return idPermissao;
+    }
+
+    public void setIdPermissao(Integer idPermissao) {
+        this.idPermissao = idPermissao;
+    }
 }
