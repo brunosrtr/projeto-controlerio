@@ -1,20 +1,24 @@
 package com.cesurg.controlerio.core.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "cidade")
 public class Cidade {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome")
     private String nome;
 
     public Cidade(){
 
     }
 
-    public Cidade(Long id, String nome){
-        this.id = id;
+    public Cidade(String nome){
         this.nome = nome;
     }
 
