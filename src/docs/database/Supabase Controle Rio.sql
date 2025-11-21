@@ -70,3 +70,13 @@ CREATE TABLE medicao (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id),
     FOREIGN KEY (id_ponto_medicao) REFERENCES ponto_medicao(id)
 );
+
+ALTER TABLE permissao DROP COLUMN acao;
+ALTER TABLE permissao RENAME nome to acao;
+
+ALTER TABLE permissao DROP COLUMN nome;
+ALTER TABLE medicao ALTER COLUMN altura SET NOT NULL;
+ALTER TABLE medicao ALTER COLUMN clima SET NOT NULL;
+ALTER TABLE medicao ALTER COLUMN temperatura SET NOT NULL;
+
+ALTER TABLE rio_cidade DROP COLUMN nome;
