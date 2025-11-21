@@ -20,9 +20,8 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
     @Transactional
     @Override
     public void criarPermissao(Permissao permissao){
-        String sql = "INSERT INTO permissao(nome, acao) VALUES(:nome, :acao)";
+        String sql = "INSERT INTO permissao(acao) VALUES(:acao)";
         entityManager.createNativeQuery(sql)
-                .setParameter("nome", permissao.getNome())
                 .setParameter("acao", permissao.getAcao())
                 .executeUpdate();
     }
@@ -30,9 +29,8 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
     @Transactional
     @Override
     public void atualizarPermissoes(Permissao permissao){
-        String sql = "UPDATE permisao SET nome = :nome, acao = :acao WHERE id = :id";
+        String sql = "UPDATE permisao SET acao = :acao WHERE id = :id";
         entityManager.createNativeQuery(sql)
-                .setParameter("nome", permissao.getNome())
                 .setParameter("acao", permissao.getAcao())
                 .setParameter("id", permissao.getId())
                 .executeUpdate();
