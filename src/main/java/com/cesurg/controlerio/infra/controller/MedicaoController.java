@@ -1,9 +1,7 @@
 package com.cesurg.controlerio.infra.controller;
 
-import com.cesurg.controlerio.core.domain.interfaces.MedicaoUseCase;
+import com.cesurg.controlerio.core.interfaces.MedicaoUseCase;
 import com.cesurg.controlerio.core.domain.model.Medicao;
-import com.cesurg.controlerio.core.domain.model.Rio;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

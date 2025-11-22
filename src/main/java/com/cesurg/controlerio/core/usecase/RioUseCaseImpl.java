@@ -1,9 +1,8 @@
 package com.cesurg.controlerio.core.usecase;
 
-import com.cesurg.controlerio.core.domain.interfaces.RioRepository;
-import com.cesurg.controlerio.core.domain.interfaces.RioUseCase;
+import com.cesurg.controlerio.core.interfaces.RioRepository;
+import com.cesurg.controlerio.core.interfaces.RioUseCase;
 import com.cesurg.controlerio.core.domain.model.Rio;
-import com.cesurg.controlerio.infra.repository.RioRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

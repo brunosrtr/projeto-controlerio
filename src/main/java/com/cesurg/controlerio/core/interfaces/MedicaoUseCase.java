@@ -1,10 +1,10 @@
-package com.cesurg.controlerio.core.domain.interfaces;
+package com.cesurg.controlerio.core.interfaces;
 
 import com.cesurg.controlerio.core.domain.model.Medicao;
 
 import java.util.List;
 
-public interface MedicaoRepository {
+public interface MedicaoUseCase {
     void adicionarMedicao(Medicao medicao);
     void atualizarMedicao(Medicao medicao);
     void deletarMedicao(Long id);

@@ -1,6 +1,6 @@
 package com.cesurg.controlerio.infra.repository;
 
-import com.cesurg.controlerio.core.domain.interfaces.MedicaoRepository;
+import com.cesurg.controlerio.core.interfaces.MedicaoRepository;
 import com.cesurg.controlerio.core.domain.model.Medicao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

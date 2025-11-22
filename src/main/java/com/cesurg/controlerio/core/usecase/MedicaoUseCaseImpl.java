@@ -1,9 +1,8 @@
 package com.cesurg.controlerio.core.usecase;
 
-import com.cesurg.controlerio.core.domain.interfaces.MedicaoRepository;
-import com.cesurg.controlerio.core.domain.interfaces.MedicaoUseCase;
+import com.cesurg.controlerio.core.interfaces.MedicaoRepository;
+import com.cesurg.controlerio.core.interfaces.MedicaoUseCase;
 import com.cesurg.controlerio.core.domain.model.Medicao;
-import com.cesurg.controlerio.infra.repository.MedicaoRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

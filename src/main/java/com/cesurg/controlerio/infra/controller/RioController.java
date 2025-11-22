@@ -1,7 +1,7 @@
 package com.cesurg.controlerio.infra.controller;
 
 
-import com.cesurg.controlerio.core.domain.interfaces.RioUseCase;
+import com.cesurg.controlerio.core.interfaces.RioUseCase;
 import com.cesurg.controlerio.core.domain.model.Rio;
 import org.springframework.web.bind.annotation.*;
 
