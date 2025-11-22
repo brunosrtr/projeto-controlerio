@@ -1,7 +1,6 @@
 package com.cesurg.controlerio.infra.controller;
 
-import com.cesurg.controlerio.core.domain.interfaces.UsuarioRepository;
-import com.cesurg.controlerio.core.domain.interfaces.UsuarioUseCase;
+import com.cesurg.controlerio.core.interfaces.UsuarioUseCase;
 import com.cesurg.controlerio.core.domain.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

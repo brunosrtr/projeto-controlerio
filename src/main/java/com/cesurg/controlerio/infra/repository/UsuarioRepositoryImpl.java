@@ -1,6 +1,6 @@
 package com.cesurg.controlerio.infra.repository;
 
-import com.cesurg.controlerio.core.domain.interfaces.UsuarioRepository;
+import com.cesurg.controlerio.core.interfaces.UsuarioRepository;
 import com.cesurg.controlerio.core.domain.model.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

@@ -1,9 +1,8 @@
-package com.cesurg.controlerio.core.usecase;
+package com.cesurg.controlerio.core.domain.usecase;
 
-import com.cesurg.controlerio.core.domain.interfaces.GrupoRepository;
-import com.cesurg.controlerio.core.domain.interfaces.GrupoUseCase;
+import com.cesurg.controlerio.core.interfaces.GrupoRepository;
+import com.cesurg.controlerio.core.interfaces.GrupoUseCase;
 import com.cesurg.controlerio.core.domain.model.Grupo;
-import com.cesurg.controlerio.infra.repository.GrupoRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

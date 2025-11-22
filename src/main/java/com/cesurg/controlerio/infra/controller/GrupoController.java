@@ -1,9 +1,7 @@
 package com.cesurg.controlerio.infra.controller;
 
-import com.cesurg.controlerio.core.domain.interfaces.GrupoRepository;
-import com.cesurg.controlerio.core.domain.interfaces.GrupoUseCase;
+import com.cesurg.controlerio.core.interfaces.GrupoUseCase;
 import com.cesurg.controlerio.core.domain.model.Grupo;
-import com.cesurg.controlerio.core.domain.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

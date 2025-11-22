@@ -1,7 +1,7 @@
-package com.cesurg.controlerio.core.usecase;
+package com.cesurg.controlerio.core.domain.usecase;
 
-import com.cesurg.controlerio.core.domain.interfaces.UsuarioRepository;
-import com.cesurg.controlerio.core.domain.interfaces.UsuarioUseCase;
+import com.cesurg.controlerio.core.interfaces.UsuarioRepository;
+import com.cesurg.controlerio.core.interfaces.UsuarioUseCase;
 import com.cesurg.controlerio.core.domain.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

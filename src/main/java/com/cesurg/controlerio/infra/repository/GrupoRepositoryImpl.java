@@ -1,7 +1,7 @@
 package com.cesurg.controlerio.infra.repository;
 
 
-import com.cesurg.controlerio.core.domain.interfaces.GrupoRepository;
+import com.cesurg.controlerio.core.interfaces.GrupoRepository;
 import com.cesurg.controlerio.core.domain.model.Grupo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

@@ -1,11 +1,11 @@
-package com.cesurg.controlerio.core.domain.interfaces;
+package com.cesurg.controlerio.core.interfaces;
 
 import com.cesurg.controlerio.core.domain.model.Grupo;
 import com.cesurg.controlerio.core.domain.model.Usuario;
 
 import java.util.List;
 
-public interface GrupoRepository {
+public interface GrupoUseCase {
     void criarGrupo(Grupo grupo);
     void atualizarGrupo(Grupo grupo);
     void deletarGrupo(Long id);

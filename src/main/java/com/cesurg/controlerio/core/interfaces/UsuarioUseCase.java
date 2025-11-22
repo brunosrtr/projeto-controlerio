@@ -1,4 +1,4 @@
-package com.cesurg.controlerio.core.domain.interfaces;
+package com.cesurg.controlerio.core.interfaces;
 
 import com.cesurg.controlerio.core.domain.model.Usuario;
 

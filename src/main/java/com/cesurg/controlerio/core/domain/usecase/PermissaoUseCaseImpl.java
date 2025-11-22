@@ -1,9 +1,8 @@
-package com.cesurg.controlerio.core.usecase;
+package com.cesurg.controlerio.core.domain.usecase;
 
-import com.cesurg.controlerio.core.domain.interfaces.PermissaoRepository;
-import com.cesurg.controlerio.core.domain.interfaces.PermissaoUseCase;
+import com.cesurg.controlerio.core.interfaces.PermissaoRepository;
+import com.cesurg.controlerio.core.interfaces.PermissaoUseCase;
 import com.cesurg.controlerio.core.domain.model.Permissao;
-import com.cesurg.controlerio.infra.repository.PermissaoRepositoryImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
