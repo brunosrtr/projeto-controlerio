@@ -4,9 +4,9 @@ import java.util.List;
 import com.cesurg.controlerio.core.domain.model.Cidade;
 
 public interface CidadeRepository {
-    List<Cidade> listar();
-    List<Cidade> buscarPorId(Long id);
-    void criar(Cidade cidade);
-    void atualizar(Cidade cidade);
-    void deletar(Long id);
+    List<Cidade> listarCidade();
+    List<Cidade> buscarCidadePorId(Long id);
+    void criarCidade(Cidade cidade);
+    void atualizarCidade(Cidade cidade);
+    void deletarCidade(Long id);
 }

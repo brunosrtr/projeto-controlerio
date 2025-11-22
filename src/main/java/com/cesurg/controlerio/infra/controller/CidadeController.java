@@ -12,30 +12,30 @@ import java.util.List;
 public class CidadeController {
 
     @Autowired
-    private CidadeUseCase cidadeUseCase;
+    CidadeUseCase cidadeUseCase;
 
     @GetMapping
-    public List<Cidade> listar() {
-        return cidadeUseCase.listarTodas();
+    public List<Cidade> listarCidade() {
+        return cidadeUseCase.listarCidade();
     }
 
     @GetMapping("/{id}")
-    public List<Cidade> buscarPorId(@PathVariable Long id) {
-        return cidadeUseCase.buscarPorId(id);
+    public List<Cidade> buscarCidadePorId(@PathVariable Long id) {
+        return cidadeUseCase.buscarCidadePorId(id);
     }
 
     @PostMapping
-    public void criar(@RequestBody Cidade cidade) {
-        cidadeUseCase.criar(cidade);
+    public void criarCidade(@RequestBody Cidade cidade) {
+        cidadeUseCase.criarCidade(cidade);
     }
 
     @PutMapping("/{id}")
-    public void atualizar(@PathVariable Long id, @RequestBody Cidade cidade) {
-        cidadeUseCase.atualizar(cidade);
+    public void atualizarCidade(@PathVariable Long id, @RequestBody Cidade cidade) {
+        cidadeUseCase.atualizarCidade(cidade);
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id) {
-        cidadeUseCase.deletar(id);
+    public void deletarCidade(@PathVariable Long id) {
+        cidadeUseCase.deletarCidade(id);
     }
 }
