@@ -19,6 +19,8 @@ public class Grupo {
     @OneToMany(mappedBy = "grupo", fetch = FetchType.LAZY)
     private List<GrupoPermissao> permissaos = new ArrayList<>();
 
+    @OneToMany(mappedBy = "grupo", fetch = FetchType.LAZY)
+    private List<Usuario> usuarios = new ArrayList<>();
 
     public Grupo() {}
 
@@ -38,14 +40,11 @@ public class Grupo {
         this.nome = nome;
     }
 
-    public List<GrupoPermissao> getPermissaos() {
-        return permissaos;
-    }
+    public List<GrupoPermissao> getPermissaos() { return permissaos; }
 
-    public void setPermissaos(List<GrupoPermissao> permissaos) {
-        this.permissaos = permissaos;
-    }
+    public void setPermissaos(List<GrupoPermissao> permissaos) { this.permissaos = permissaos; }
+
+    public List<Usuario> getUsuarios() { return usuarios; }
+
+    public void setUsuarios(List<Usuario> usuarios) { this.usuarios = usuarios; }
 }
-
-
-

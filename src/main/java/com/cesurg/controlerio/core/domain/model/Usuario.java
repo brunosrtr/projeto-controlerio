@@ -19,11 +19,13 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
-    public Usuario() {
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_grupo")
+    private Grupo grupo;
 
-    public Usuario(Long id, String nome, String email, String senha) {
-        this.id = id;
+    public Usuario() {}
+
+    public Usuario(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -31,10 +33,6 @@ public class Usuario {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -59,4 +57,8 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public Grupo getGrupo() { return grupo; }
+
+    public void setGrupo(Grupo grupo) { this.grupo = grupo; }
 }

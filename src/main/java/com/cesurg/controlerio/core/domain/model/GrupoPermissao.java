@@ -3,7 +3,7 @@ package com.cesurg.controlerio.core.domain.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "grupo_permissao")
+@Table(name = "grupo_permissao_")
 public class GrupoPermissao {
 
     @Id
