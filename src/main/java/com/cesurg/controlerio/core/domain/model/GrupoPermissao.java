@@ -3,7 +3,7 @@ package com.cesurg.controlerio.core.domain.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "grupo_permissa0")
+@Table(name = "grupo_permissao")
 public class GrupoPermissao {
 
     @Id
@@ -12,23 +12,22 @@ public class GrupoPermissao {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_grupo", referencedColumnName = "id")
+    @JoinColumn(name = "id_grupo")
     private Grupo grupo;
 
-    private Integer idGrupo;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_permissao", referencedColumnName = "id")
+    @JoinColumn(name = "id_permissao")
     private Permissao permissao;
 
-    private Integer idPermissao;
+    public GrupoPermissao() {}
+
+    public GrupoPermissao(Grupo grupo, Permissao permissao) {
+        this.grupo = grupo;
+        this.permissao = permissao;
+    }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Grupo getGrupo() {
@@ -39,14 +38,6 @@ public class GrupoPermissao {
         this.grupo = grupo;
     }
 
-    public Integer getIdGrupo() {
-        return idGrupo;
-    }
-
-    public void setIdGrupo(Integer idGrupo) {
-        this.idGrupo = idGrupo;
-    }
-
     public Permissao getPermissao() {
         return permissao;
     }
@@ -55,11 +46,4 @@ public class GrupoPermissao {
         this.permissao = permissao;
     }
 
-    public Integer getIdPermissao() {
-        return idPermissao;
-    }
-
-    public void setIdPermissao(Integer idPermissao) {
-        this.idPermissao = idPermissao;
-    }
 }

@@ -2,6 +2,7 @@ package com.cesurg.controlerio.core.domain.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,20 +17,17 @@ public class Permissao {
     @Column(name = "acao")
     private String acao;
 
-    public Permissao() {
-    }
+    @OneToMany(mappedBy = "permissao", fetch = FetchType.LAZY)
+    private List<GrupoPermissao> grupos = new ArrayList<>();
 
-    public Permissao(Long id, String acao) {
-        this.id = id;
+    public Permissao() {}
+
+    public Permissao(String acao) {
         this.acao = acao;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getAcao() {
@@ -38,5 +36,13 @@ public class Permissao {
 
     public void setAcao(String acao) {
         this.acao = acao;
+    }
+
+    public List<GrupoPermissao> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(List<GrupoPermissao> grupos) {
+        this.grupos = grupos;
     }
 }

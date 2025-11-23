@@ -24,6 +24,9 @@ public class Rio {
         return nome;
     }
 
+    @OneToMany(mappedBy = "rio", fetch = FetchType.LAZY)
+    private List<RioCidade> cidades = new ArrayList<>();
+
     public Rio(){}
 
     public Rio(String nome) {
@@ -31,8 +34,6 @@ public class Rio {
         this.cidades = new ArrayList<>();
     }
 
-    @OneToMany(mappedBy = "rio", fetch = FetchType.LAZY)
-    private List<RioCidade> cidades = new ArrayList<>();
 
     public void setNome(String nome) {
         this.nome = nome;

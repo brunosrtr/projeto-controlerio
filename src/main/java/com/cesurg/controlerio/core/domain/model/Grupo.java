@@ -1,6 +1,8 @@
 package com.cesurg.controlerio.core.domain.model;
 
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "grupo")
@@ -14,20 +16,18 @@ public class Grupo {
     @Column(name = "nome")
     private String nome;
 
-    public Grupo() {
-    }
+    @OneToMany(mappedBy = "grupo", fetch = FetchType.LAZY)
+    private List<GrupoPermissao> permissaos = new ArrayList<>();
 
-    public Grupo(Long id, String nome) {
-        this.id = id;
+
+    public Grupo() {}
+
+    public Grupo(String nome) {
         this.nome = nome;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -36,6 +36,14 @@ public class Grupo {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<GrupoPermissao> getPermissaos() {
+        return permissaos;
+    }
+
+    public void setPermissaos(List<GrupoPermissao> permissaos) {
+        this.permissaos = permissaos;
     }
 }
 
