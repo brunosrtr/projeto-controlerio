@@ -28,8 +28,9 @@ public class Medicao {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    @Column(name = "id_ponto_medicao")
-    private int idPontoMedicao;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_ponto_medicao")
+    private PontoMedicao pontoMedicao;
 
     public Medicao() {}
 
@@ -76,13 +77,9 @@ public class Medicao {
         this.temperatura = temperatura;
     }
 
-    public int getIdPontoMedicao() {
-        return idPontoMedicao;
-    }
+    public PontoMedicao getPontoMedicao() { return pontoMedicao; }
 
-    public void setIdPontoMedicao(int idPontoMedicao) {
-        this.idPontoMedicao = idPontoMedicao;
-    }
+    public void setPontoMedicao(PontoMedicao pontoMedicao) { this.pontoMedicao = pontoMedicao; }
 
     public Usuario getUsuario() { return usuario; }
 

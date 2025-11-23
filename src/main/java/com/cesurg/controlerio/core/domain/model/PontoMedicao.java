@@ -2,6 +2,9 @@ package com.cesurg.controlerio.core.domain.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "ponto_medicao")
 public class PontoMedicao {
@@ -25,6 +28,9 @@ public class PontoMedicao {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_rio")
     private Rio rio;
+
+    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY)
+    private List<Medicao> medicoes = new ArrayList<>();
 
     public PontoMedicao() {}
 
@@ -55,4 +61,8 @@ public class PontoMedicao {
     public Rio getRio() { return rio; }
 
     public void setRio(Rio rio) { this.rio = rio; }
+
+    public List<Medicao> getMedicoes() { return medicoes; }
+
+    public void setMedicoes(List<Medicao> medicoes) { this.medicoes = medicoes; }
 }
