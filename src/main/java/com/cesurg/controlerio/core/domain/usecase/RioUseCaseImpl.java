@@ -1,4 +1,4 @@
-package com.cesurg.controlerio.core.usecase;
+package com.cesurg.controlerio.core.domain.usecase;
 
 import com.cesurg.controlerio.core.interfaces.RioRepository;
 import com.cesurg.controlerio.core.interfaces.RioUseCase;
