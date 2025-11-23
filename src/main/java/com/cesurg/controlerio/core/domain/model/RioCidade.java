@@ -11,15 +11,20 @@ public class RioCidade {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "id_rio")
-    private Long idRio;
-
-    @Column(name = "id_cidade")
-    private Long idCidade;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_rio")
+    private Rio rio;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_rio", referencedColumnName = "id", insertable = false, updatable = false)
-    private Rio rio;
+    @JoinColumn(name = "id_cidade")
+    private Cidade cidade;
+
+    public RioCidade() {}
+
+    public RioCidade(Rio rio, Cidade cidade) {
+        this.rio = rio;
+        this.cidade = cidade;
+    }
 
     public Rio getRio() {
         return rio;
@@ -33,23 +38,5 @@ public class RioCidade {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public Long getIdRio() {
-        return idRio;
-    }
-
-    public void setIdRio(Long idRio) {
-        this.idRio = idRio;
-    }
-
-    public Long getIdCidade() {
-        return idCidade;
-    }
-
-    public void setIdCidade(Long idCidade) {
-        this.idCidade = idCidade;
-    }
 }

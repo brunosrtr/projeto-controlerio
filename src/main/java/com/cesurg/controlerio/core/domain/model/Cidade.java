@@ -2,6 +2,9 @@ package com.cesurg.controlerio.core.domain.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "cidade")
 public class Cidade {
@@ -14,19 +17,18 @@ public class Cidade {
     @Column(name = "nome")
     private String nome;
 
-    public Cidade(){
+    @OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY)
+    private List<RioCidade> rios = new ArrayList<>();
 
-    }
+    public Cidade(){}
 
     public Cidade(String nome){
         this.nome = nome;
+        this.rios = new ArrayList<>();
     }
 
     public Long getId() {
         return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -35,4 +37,8 @@ public class Cidade {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public List<RioCidade> getRios() { return rios;}
+
+    public void setRios(List<RioCidade> rios) { this.rios = rios; }
 }

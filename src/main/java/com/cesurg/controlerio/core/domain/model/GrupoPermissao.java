@@ -12,13 +12,13 @@ public class GrupoPermissao {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_grupo", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "id_grupo", referencedColumnName = "id")
     private Grupo grupo;
 
     private Integer idGrupo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_permissao", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "id_permissao", referencedColumnName = "id")
     private Permissao permissao;
 
     private Integer idPermissao;
