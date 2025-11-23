@@ -1,9 +1,6 @@
 package com.cesurg.controlerio.core.domain.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +8,8 @@ import java.time.LocalDateTime;
 @Table(name = "medicao")
 public class Medicao {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "altura")
@@ -25,18 +24,24 @@ public class Medicao {
     @Column(name = "temperatura")
     private int temperatura;
 
-    @Column(name = "id_usuario")
-    private int idUsuario;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
 
     @Column(name = "id_ponto_medicao")
     private int idPontoMedicao;
 
-    public Long getId() {
-        return id;
+    public Medicao() {}
+
+    public Medicao(double altura, String clima, LocalDateTime dataCriacao, int temperatura) {
+        this.altura = altura;
+        this.clima = clima;
+        this.dataCriacao = dataCriacao;
+        this.temperatura = temperatura;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     public double getAltura() {
@@ -71,14 +76,6 @@ public class Medicao {
         this.temperatura = temperatura;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public int getIdPontoMedicao() {
         return idPontoMedicao;
     }
@@ -86,4 +83,8 @@ public class Medicao {
     public void setIdPontoMedicao(int idPontoMedicao) {
         this.idPontoMedicao = idPontoMedicao;
     }
+
+    public Usuario getUsuario() { return usuario; }
+
+    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
 }

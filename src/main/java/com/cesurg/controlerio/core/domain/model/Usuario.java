@@ -2,6 +2,9 @@ package com.cesurg.controlerio.core.domain.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table (name = "usuario")
 public class Usuario {
@@ -22,6 +25,9 @@ public class Usuario {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_grupo")
     private Grupo grupo;
+
+    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY)
+    private List<Medicao> mediocoes = new ArrayList<>();
 
     public Usuario() {}
 
@@ -61,4 +67,8 @@ public class Usuario {
     public Grupo getGrupo() { return grupo; }
 
     public void setGrupo(Grupo grupo) { this.grupo = grupo; }
+
+    public List<Medicao> getMediocoes() { return mediocoes; }
+
+    public void setMediocoes(List<Medicao> mediocoes) { this.mediocoes = mediocoes; }
 }
