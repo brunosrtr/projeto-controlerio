@@ -28,6 +28,8 @@ public class Grupo {
         this.nome = nome;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public Long getId() {
         return id;
     }

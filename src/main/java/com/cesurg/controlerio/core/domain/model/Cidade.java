@@ -27,6 +27,8 @@ public class Cidade {
         this.rios = new ArrayList<>();
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public Long getId() {
         return id;
     }

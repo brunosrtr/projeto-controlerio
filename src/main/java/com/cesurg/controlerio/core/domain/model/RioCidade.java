@@ -26,6 +26,8 @@ public class RioCidade {
         this.cidade = cidade;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public Rio getRio() {
         return rio;
     }
@@ -38,5 +40,7 @@ public class RioCidade {
         return id;
     }
 
+    public Cidade getCidade() { return cidade; }
 
+    public void setCidade(Cidade cidade) { this.cidade = cidade; }
 }

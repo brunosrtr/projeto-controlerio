@@ -26,6 +26,8 @@ public class GrupoPermissao {
         this.permissao = permissao;
     }
 
+    public void setId(Long id) { this.id = id; }
+
     public Long getId() {
         return id;
     }
