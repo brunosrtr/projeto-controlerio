@@ -25,7 +25,7 @@ public class PontoMedicaoRepositoryImpl implements PontoMedicaoRepository {
 
     @Transactional
     @Override
-    public List<PontoMedicao> buscarPontoPorId() {
+    public List<PontoMedicao> buscarPontoPorId(Long id) {
         String sql = "SELECT id, nome FROM ponto_medicao WHERE id = :id";
         return entityManager.createNativeQuery(sql, PontoMedicao.class).getResultList();
     }

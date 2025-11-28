@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PontoMedicaoRepository {
     List<PontoMedicao> listarPonto();
-    List<PontoMedicao> buscarPontoPorId();
+    List<PontoMedicao> buscarPontoPorId(Long id);
     void criarPonto(PontoMedicao pontoMedicao);
 
     void atualizarPonto(PontoMedicao pontoMedicao);

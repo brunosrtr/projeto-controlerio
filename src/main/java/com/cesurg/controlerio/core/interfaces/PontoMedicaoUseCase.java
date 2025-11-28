@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface PontoMedicaoUseCase {
     List<PontoMedicao> listarPonto();
-    List<PontoMedicao> buscarPontoPorId();
-    void criarPonto();
-    void atualizarPonto();
-    void deletarPonto();
+    List<PontoMedicao> buscarPontoPorId(Long id);
+    void criarPonto(PontoMedicao pontoMedicao);
+    void atualizarPonto(PontoMedicao pontoMedicao);
+    void deletarPonto(Long id);
 }
