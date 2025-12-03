@@ -29,7 +29,7 @@ public class PontoMedicao {
     @JoinColumn(name = "id_rio")
     private Rio rio;
 
-    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pontoMedicao", fetch = FetchType.LAZY)
     private List<Medicao> medicoes = new ArrayList<>();
 
     public PontoMedicao() {}

@@ -24,8 +24,8 @@ public class MedicaoRepositoryImpl implements MedicaoRepository {
                 .setParameter("altura", medicao.getAltura())
                 .setParameter("clima", medicao.getClima())
                 .setParameter("temperatura", medicao.getTemperatura())
-                .setParameter("id_usuario", medicao.getIdUsuario())
-                .setParameter("id_ponto_medicao", medicao.getIdPontoMedicao())
+                .setParameter("id_usuario", medicao.getUsuario())
+                .setParameter("id_ponto_medicao", medicao.getPontoMedicao())
         .executeUpdate();
     }
 
@@ -41,8 +41,8 @@ public class MedicaoRepositoryImpl implements MedicaoRepository {
                 .setParameter("clima", medicao.getClima())
                 .setParameter("data_criacao", medicao.getDataCriacao())
                 .setParameter("temperatura", medicao.getTemperatura())
-                .setParameter("id_usuario", medicao.getIdUsuario())
-                .setParameter("id_ponto_medicao", medicao.getIdPontoMedicao())
+                .setParameter("id_usuario", medicao.getUsuario())
+                .setParameter("id_ponto_medicao", medicao.getPontoMedicao())
                 .executeUpdate();
     }
 
