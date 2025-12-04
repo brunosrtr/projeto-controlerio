@@ -1,5 +1,6 @@
 package com.cesurg.controlerio.core.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class Usuario {
     @Column(name = "email")
     private String email;
 
+    @JsonIgnore
     @Column(name = "senha")
     private String senha;
 
@@ -26,8 +28,8 @@ public class Usuario {
     @JoinColumn(name = "id_grupo")
     private Grupo grupo;
 
-    @OneToMany(mappedBy = "medicao", fetch = FetchType.LAZY)
-    private List<Medicao> mediocoes = new ArrayList<>();
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Medicao> medicoes = new ArrayList<>();
 
     public Usuario() {}
 
@@ -70,7 +72,7 @@ public class Usuario {
 
     public void setGrupo(Grupo grupo) { this.grupo = grupo; }
 
-    public List<Medicao> getMediocoes() { return mediocoes; }
+    public List<Medicao> getMediocoes() { return medicoes; }
 
-    public void setMediocoes(List<Medicao> mediocoes) { this.mediocoes = mediocoes; }
+    public void setMediocoes(List<Medicao> mediocoes) { this.medicoes = mediocoes; }
 }
