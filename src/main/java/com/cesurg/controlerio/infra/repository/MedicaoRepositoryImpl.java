@@ -19,14 +19,15 @@ public class MedicaoRepositoryImpl implements MedicaoRepository {
     @Override
     public void adicionarMedicao(Medicao medicao) {
         String query = "INSERT INTO medicao (altura, clima, temperatura, id_usuario, id_ponto_medicao)" +
-        " VALUES (:altura, :clima, :temperatura, :id_usuario, :id_ponto_medicao)";
-        entityManager.createNativeQuery(query, Medicao.class)
+        " VALUES (:altura, :clima, :temperatura, :id_usuario, :id_ponto_medicao) RETURNING id";
+        Number id = (Number) entityManager.createNativeQuery(query)
                 .setParameter("altura", medicao.getAltura())
                 .setParameter("clima", medicao.getClima())
                 .setParameter("temperatura", medicao.getTemperatura())
                 .setParameter("id_usuario", medicao.getUsuario())
                 .setParameter("id_ponto_medicao", medicao.getPontoMedicao())
-        .executeUpdate();
+                .getSingleResult();
+        medicao.setId(id.longValue());
     }
 
     @Transactional

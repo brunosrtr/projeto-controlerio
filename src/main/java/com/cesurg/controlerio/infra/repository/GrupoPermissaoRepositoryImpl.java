@@ -18,12 +18,14 @@ public class GrupoPermissaoRepositoryImpl implements GrupoPermissaoRepository {
     @Transactional
     @Override
     public void criar(GrupoPermissao grupoPermissao) {
-        String sql = "INSERT INTO grupo_permissao (id_grupo, id_permissao) VALUES (:1, :2)";
+        String sql = "INSERT INTO grupo_permissao (id_grupo, id_permissao) VALUES (:1, :2) RETURNING id";
 
-        entityManager.createNativeQuery(sql)
-            .setParameter(1, grupoPermissao.getGrupo().getId())
-            .setParameter(2, grupoPermissao.getPermissao().getId())
-            .executeUpdate();
+        Number id = (Number) entityManager.createNativeQuery(sql)
+                .setParameter("id_grupo", grupoPermissao.getGrupo().getId())
+                .setParameter("id_permissao", grupoPermissao.getPermissao().getId())
+                .getSingleResult();
+
+        grupoPermissao.setId(id.longValue());
     }
 
     @Transactional

@@ -20,9 +20,10 @@ public class GrupoRepositoryImpl implements GrupoRepository {
     @Override
     public void criarGrupo(Grupo grupo) {
         String sql = "INSERT INTO grupo (nome) VALUES (:nome)";
-        entityManager.createNativeQuery(sql)
+        Number id = (Number) entityManager.createNativeQuery(sql)
                 .setParameter("nome", grupo.getNome())
-                .executeUpdate();
+                .getSingleResult();
+        grupo.setId(id.longValue());
     }
 
     @Transactional

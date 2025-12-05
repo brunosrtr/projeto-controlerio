@@ -37,14 +37,17 @@ public class PontoMedicaoRepositoryImpl implements PontoMedicaoRepository {
     public void criarPonto(PontoMedicao pontoMedicao) {
 
         String sql = "INSERT INTO ponto_medicao (nome, altura_estavel, latitude, longitude, id_rio) " +
-                "VALUES (:nome, :altura_estavel, :latitude, :longitude, :id_rio)";
-        entityManager.createNativeQuery(sql)
+                "VALUES (:nome, :altura_estavel, :latitude, :longitude, :id_rio) RETURNING id";
+
+        Number id = (Number) entityManager.createNativeQuery(sql)
                 .setParameter("nome", pontoMedicao.getNome())
                 .setParameter("altura_estavel", pontoMedicao.getAlturaEstavel())
                 .setParameter("latitude", pontoMedicao.getLatitude())
                 .setParameter("longitude", pontoMedicao.getLongitude())
                 .setParameter("id_rio", pontoMedicao.getRio().getId())
-                .executeUpdate();
+                .getSingleResult();
+
+        pontoMedicao.setId(id.longValue());
     }
 
     @Transactional

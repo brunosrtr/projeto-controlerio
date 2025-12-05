@@ -19,10 +19,12 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
     @Transactional
     @Override
     public void criarPermissao(Permissao permissao){
-        String sql = "INSERT INTO permissao(acao) VALUES(:acao)";
-        entityManager.createNativeQuery(sql)
+        String sql = "INSERT INTO permissao(acao) VALUES(:acao) RETURNING id";
+        Number id = (Number) entityManager.createNativeQuery(sql)
                 .setParameter("acao", permissao.getAcao())
-                .executeUpdate();
+                .getSingleResult();
+
+        permissao.setId(id.longValue());
     }
 
     @Transactional

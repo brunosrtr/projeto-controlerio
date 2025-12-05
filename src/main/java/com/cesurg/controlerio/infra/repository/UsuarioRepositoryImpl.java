@@ -18,12 +18,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Transactional
     @Override
     public void criarUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)";
-        entityManager.createNativeQuery(sql)
+        String sql = "INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha) RETURNING id";
+        Number id = (Number) entityManager.createNativeQuery(sql)
                 .setParameter("nome", usuario.getNome())
                 .setParameter("email", usuario.getEmail())
                 .setParameter("senha", usuario.getSenha())
-                .executeUpdate();
+                .getSingleResult();
+        usuario.setId(id.longValue());
     }
 
     @Override

@@ -18,10 +18,12 @@ public class RioRepositoryImpl implements RioRepository{
     @Transactional
     @Override
     public void adicionarRio(Rio rio) {
-        String query = "INSERT INTO rio (nome) VALUES (:nome)";
-        entityManager.createNativeQuery(query, Rio.class)
+        String query = "INSERT INTO rio (nome) VALUES (:nome) RETURNING id";
+        Number id = (Number) entityManager.createNativeQuery(query, Rio.class)
                 .setParameter("nome", rio.getNome())
-                .executeUpdate();
+                .getSingleResult();
+
+        rio.setId(id.longValue());
     }
 
     @Transactional

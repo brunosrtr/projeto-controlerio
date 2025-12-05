@@ -31,10 +31,13 @@ public class CidadeRepositoryImpl implements CidadeRepository {
     @Transactional
     @Override
     public void criarCidade(Cidade cidade) {
-        String sql = "INSERT INTO cidade (nome) VALUES (:nome)";
-        Query query = entityManager.createNativeQuery(sql)
-        .setParameter("nome", cidade.getNome());
-        query.executeUpdate();
+        String sql = "INSERT INTO cidade (nome) VALUES (:nome) RETURNING id";
+
+        Number id = (Number) entityManager.createNativeQuery(sql)
+                .setParameter("nome", cidade.getNome())
+                .getSingleResult();
+
+        cidade.setId(id.longValue());
     }
 
     @Transactional
