@@ -28,7 +28,7 @@ public class PermissaoRepositoryImpl implements PermissaoRepository {
     @Transactional
     @Override
     public void atualizarPermissoes(Permissao permissao){
-        String sql = "UPDATE permisao SET acao = :acao WHERE id = :id";
+        String sql = "UPDATE permissao SET acao = :acao WHERE id = :id";
         entityManager.createNativeQuery(sql)
                 .setParameter("acao", permissao.getAcao())
                 .setParameter("id", permissao.getId())
