@@ -16,36 +16,60 @@ public class PontoMedicaoRepositoryImpl implements PontoMedicaoRepository {
     @PersistenceContext
     EntityManager entityManager;
 
-    @Transactional
     @Override
     public List<PontoMedicao> listarPonto() {
-        String sql = "SELECT id, nome FROM ponto_medicao";
-        return entityManager.createNativeQuery(sql, PontoMedicao.class).getResultList();
+        String sql = "SELECT * FROM ponto_medicao";
+        return entityManager
+                .createNativeQuery(sql, PontoMedicao.class)
+                .getResultList();
     }
 
-    @Transactional
     @Override
     public List<PontoMedicao> buscarPontoPorId(Long id) {
-        String sql = "SELECT id, nome FROM ponto_medicao WHERE id = :id";
-        return entityManager.createNativeQuery(sql, PontoMedicao.class).getResultList();
+        String sql = "SELECT * FROM ponto_medicao WHERE id = :id";
+        return entityManager
+                .createNativeQuery(sql, PontoMedicao.class)
+                .setParameter("id", id)
+                .getResultList();
     }
 
     @Transactional
     @Override
     public void criarPonto(PontoMedicao pontoMedicao) {
-        String sql = "INSERT INTO ponto_medicao (nome, altura_estavel, latitude, longitude) VALUES (:nome, :altura_estavel, latitude, longitude)";
+        String sql = """
+            INSERT INTO ponto_medicao 
+                (nome, altura_estavel, latitude, longitude)
+            VALUES 
+                (:nome, :altura_estavel, :latitude, :longitude)
+        """;
+
         entityManager.createNativeQuery(sql)
                 .setParameter("nome", pontoMedicao.getNome())
+                .setParameter("altura_estavel", pontoMedicao.getAlturaEstavel())
+                .setParameter("latitude", pontoMedicao.getLatitude())
+                .setParameter("longitude", pontoMedicao.getLongitude())
                 .executeUpdate();
     }
 
     @Transactional
     @Override
     public void atualizarPonto(PontoMedicao pontoMedicao) {
-        String sql = "UPDATE cidade SET nome = :nome WHERE id = :id";
+        String sql = """
+            UPDATE ponto_medicao
+            SET nome = :nome,
+                altura_estavel = :altura_estavel,
+                latitude = :latitude,
+                longitude = :longitude
+            WHERE id = :id
+        """;
+
         Query query = entityManager.createNativeQuery(sql)
                 .setParameter("nome", pontoMedicao.getNome())
+                .setParameter("altura_estavel", pontoMedicao.getAlturaEstavel())
+                .setParameter("latitude", pontoMedicao.getLatitude())
+                .setParameter("longitude", pontoMedicao.getLongitude())
                 .setParameter("id", pontoMedicao.getId());
+
         query.executeUpdate();
     }
 
@@ -53,8 +77,9 @@ public class PontoMedicaoRepositoryImpl implements PontoMedicaoRepository {
     @Override
     public void deletarPonto(Long id) {
         String sql = "DELETE FROM ponto_medicao WHERE id = :id";
-        Query query = entityManager.createNativeQuery(sql)
-                .setParameter("id", id);
-        query.executeUpdate();
+
+        entityManager.createNativeQuery(sql)
+                .setParameter("id", id)
+                .executeUpdate();
     }
 }
