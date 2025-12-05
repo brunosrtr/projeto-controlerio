@@ -4,6 +4,7 @@ import com.cesurg.controlerio.core.interfaces.MedicaoUseCase;
 import com.cesurg.controlerio.core.domain.model.Medicao;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -34,5 +35,10 @@ public class MedicaoController {
     @GetMapping
     public List<Medicao> listarMedicoes() {
         return medicaoUseCase.listarMedicoes();
+    }
+
+    @GetMapping("/filtros")
+    public List<Medicao> filtroPorDia(@RequestParam LocalDate dataInicio, @RequestParam LocalDate dataFim) {
+        return medicaoUseCase.filtroPorDia(dataInicio, dataFim);
     }
 }

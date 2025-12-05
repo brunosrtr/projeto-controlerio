@@ -7,6 +7,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -59,6 +61,16 @@ public class MedicaoRepositoryImpl implements MedicaoRepository {
     public List<Medicao> listarMedicoes() {
         String query = "SELECT * FROM medicao";
         return entityManager.createNativeQuery(query, Medicao.class).getResultList();
+    }
+
+    public List<Medicao> filtroPorDia(LocalDateTime dataInicio, LocalDateTime dataFim){
+        String query = "SELECT * FROM medicao " +
+                "WHERE data_criacao " +
+                "BETWEEN :dataInicio AND :dataFim";
+        return entityManager.createNativeQuery(query, Medicao.class)
+                .setParameter("dataInicio",dataInicio)
+                .setParameter("dataFim", dataFim)
+                .getResultList();
     }
 
 }
