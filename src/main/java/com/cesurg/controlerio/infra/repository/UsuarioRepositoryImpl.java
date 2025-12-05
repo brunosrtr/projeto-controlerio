@@ -5,6 +5,7 @@ import com.cesurg.controlerio.core.domain.model.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -59,6 +60,15 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
         return (Usuario) entityManager.createNativeQuery(sql, Usuario.class)
                 .setParameter("id", id)
+                .getSingleResult();
+    }
+
+    @Override
+    public UserDetails buscarPorEmail(String email) {
+        String sql = "SELECT email FROM usuario WHERE email = :id";
+
+        return (Usuario) entityManager.createNativeQuery(sql, Usuario.class)
+                .setParameter("email",email)
                 .getSingleResult();
     }
 }

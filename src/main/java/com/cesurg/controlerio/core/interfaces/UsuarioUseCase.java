@@ -1,6 +1,7 @@
 package com.cesurg.controlerio.core.interfaces;
 
 import com.cesurg.controlerio.core.domain.model.Usuario;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 
