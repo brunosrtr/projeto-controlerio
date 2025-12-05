@@ -1,5 +1,3 @@
-package com.cesurg.controlerio.core.domain.usecase;
-
 import com.cesurg.controlerio.core.interfaces.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +13,12 @@ public class AuthorizationUseCase implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usuarioRepository.buscarPorEmail(username);
+        UserDetails user = usuarioRepository.buscarPorEmail(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("Usuário não encontrado: " + username);
+        }
+
+        return user;
     }
 }

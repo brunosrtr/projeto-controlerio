@@ -19,24 +19,25 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
     @Transactional
     @Override
     public void criarUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuario (nome, email, senha) VALUES (:nome, :email, :senha)";
+        String sql = "INSERT INTO usuario (nome, email, senha, grupo) VALUES (:nome, :email, :senha, :grupo)";
         entityManager.createNativeQuery(sql)
                 .setParameter("nome", usuario.getNome())
                 .setParameter("email", usuario.getEmail())
                 .setParameter("senha", usuario.getSenha())
+                .setParameter("grupo", usuario.getGrupo().name())
                 .executeUpdate();
     }
 
     @Override
-    public List<Usuario> listarUsuario(){
+    public List<Usuario> listarUsuario() {
         String sql = "SELECT * FROM usuario";
         return entityManager.createNativeQuery(sql, Usuario.class).getResultList();
     }
 
     @Transactional
     @Override
-    public void deletarUsuario(Long id){
-        String sql = "DELETE FROM usuario WHERE ID = :id";
+    public void deletarUsuario(Long id) {
+        String sql = "DELETE FROM usuario WHERE id = :id";
         entityManager.createNativeQuery(sql)
                 .setParameter("id", id)
                 .executeUpdate();
@@ -44,18 +45,19 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Transactional
     @Override
-    public void atualizarUsuario(Usuario usuario){
-        String sql = "UPDATE usuario SET nome = :nome, email = :email, senha = :senha WHERE id = :id";
+    public void atualizarUsuario(Usuario usuario) {
+        String sql = "UPDATE usuario SET nome = :nome, email = :email, senha = :senha, grupo = :grupo WHERE id = :id";
         entityManager.createNativeQuery(sql)
                 .setParameter("nome", usuario.getNome())
                 .setParameter("email", usuario.getEmail())
                 .setParameter("senha", usuario.getSenha())
+                .setParameter("grupo", usuario.getGrupo().name())
                 .setParameter("id", usuario.getId())
                 .executeUpdate();
     }
 
     @Override
-    public Usuario buscarUsuario(Long id){
+    public Usuario buscarUsuario(Long id) {
         String sql = "SELECT * FROM usuario WHERE id = :id";
 
         return (Usuario) entityManager.createNativeQuery(sql, Usuario.class)
@@ -65,10 +67,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
     @Override
     public UserDetails buscarPorEmail(String email) {
-        String sql = "SELECT email FROM usuario WHERE email = :id";
+        String sql = "SELECT * FROM usuario WHERE email = :email";
 
         return (Usuario) entityManager.createNativeQuery(sql, Usuario.class)
-                .setParameter("email",email)
+                .setParameter("email", email)
                 .getSingleResult();
     }
 }

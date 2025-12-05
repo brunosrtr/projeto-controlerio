@@ -11,25 +11,21 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table (name = "usuario")
+@Table(name = "usuario")
 public class Usuario implements UserDetails {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
 
-    @Column(name = "nome")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String nome;
 
-    @Column(name = "email")
     private String email;
 
     @JsonIgnore
-    @Column(name = "senha")
     private String senha;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_grupo")
+    @Enumerated(EnumType.STRING)
     private Role grupo;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
@@ -43,10 +39,12 @@ public class Usuario implements UserDetails {
         this.senha = senha;
     }
 
-    public void setId(long id) { this.id = id; }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -73,48 +71,34 @@ public class Usuario implements UserDetails {
         this.senha = senha;
     }
 
-    public Role getGrupo() { return grupo; }
+    public Role getGrupo() {
+        return grupo;
+    }
 
-    public void setGrupo(Role grupo) { this.grupo = grupo; }
+    public void setGrupo(Role grupo) {
+        this.grupo = grupo;
+    }
 
-    public List<Medicao> getMediocoes() { return medicoes; }
+    public List<Medicao> getMedicoes() {
+        return medicoes;
+    }
 
-    public void setMediocoes(List<Medicao> mediocoes) { this.medicoes = mediocoes; }
+    public void setMedicoes(List<Medicao> medicoes) {
+        this.medicoes = medicoes;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(this.grupo == Role.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
-        if(this.grupo == Role.BOMBEIRO) return List.of(new SimpleGrantedAuthority("ROLE_BOMBEIRO"));
-        else return List.of(new SimpleGrantedAuthority("ROLE_RADIO"));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + this.grupo.name()));
     }
 
     @Override
     public String getPassword() {
-        return "";
+        return this.senha;
     }
 
     @Override
     public String getUsername() {
-        return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return this.email;
     }
 }
