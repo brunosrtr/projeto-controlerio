@@ -1,5 +1,6 @@
 package com.cesurg.controlerio.core.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class Rio {
     @OneToMany(mappedBy = "rio", fetch = FetchType.LAZY)
     private List<RioCidade> cidades = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "rio", fetch = FetchType.LAZY)
     private List<PontoMedicao> pontos = new ArrayList<>();
 

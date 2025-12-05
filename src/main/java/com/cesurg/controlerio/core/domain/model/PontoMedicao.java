@@ -1,5 +1,6 @@
 package com.cesurg.controlerio.core.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -25,10 +26,11 @@ public class PontoMedicao {
     @Column(name = "longitude")
     private String longitude;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_rio")
     private Rio rio;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "pontoMedicao", fetch = FetchType.LAZY)
     private List<Medicao> medicoes = new ArrayList<>();
 
